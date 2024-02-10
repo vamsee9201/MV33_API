@@ -1,1 +1,1 @@
-#This is a git ignore file text
+hello , this is  a git ignore test
