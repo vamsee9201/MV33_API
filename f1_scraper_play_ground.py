@@ -8,3 +8,5 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 links = soup.find_all('a')
 print(links)
+#%%
+links = soup.find_all('a')
