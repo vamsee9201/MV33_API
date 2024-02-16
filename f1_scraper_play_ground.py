@@ -31,3 +31,21 @@ driverTable = pd.DataFrame(dataFrameJson)
 # %%
 driverTable
 # %%
+
+#getting the team table. 
+#%%
+url = "https://www.formula1.com/en/results.html/2023/team.html"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+#%%
+teamNames = [a.get_text() for a in soup.find_all("a",class_ = "dark bold uppercase ArchiveLink")]
+# %%
+teamPoints = [td.get_text() for td in soup.find_all("td",class_="dark bold")]
+teamPoints
+# %%
+teamJson = {
+    "constructorName":teamNames,
+    "points":teamPoints
+}
+# %%
+teamTable = pd.DataFrame(teamJson)
