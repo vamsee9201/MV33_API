@@ -9,4 +9,8 @@ soup = BeautifulSoup(response.content, 'html.parser')
 links = soup.find_all('a')
 print(links)
 #%%
-links = soup.find_all('a')
+links = soup.find_all({"class":"clip"})
+links
+# %%
+links1 = soup.find_all({"class":"clip"})
+links1
