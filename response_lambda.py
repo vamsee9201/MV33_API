@@ -6,6 +6,8 @@ import pandas as pd
 import json
 #%%
 def handler(event,context):
+
+    #replace year and route values with the ones that are passed through event. 
     year = 2023
     route = "drivers"
 
@@ -55,7 +57,7 @@ def handler(event,context):
         "message":"no data"
     }
     return {
-        "statusCode": 200,
+        "statusCode": 404,
         'headers': {'Content-Type': 'application/json'},
         "body":json.dumps(defaultJSON)
     }
