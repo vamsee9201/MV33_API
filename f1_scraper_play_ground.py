@@ -49,3 +49,6 @@ teamJson = {
 }
 # %%
 teamTable = pd.DataFrame(teamJson)
+teamTable
+
+# %%
