@@ -8,8 +8,14 @@ import json
 def handler(event,context):
 
     #replace year and route values with the ones that are passed through event. 
-    year = event["year"]
-    route = "drivers"
+    print(event)
+    request_body = json.loads(event['body'])
+    year = request_body["year"]
+    route = event["resource"][1:]
+    """
+    route = "teams"
+    year = 2023
+    """
 
     
    
@@ -64,10 +70,13 @@ def handler(event,context):
 
 #%%
 
+"""
 if __name__ == "__main__":
     json_data = {
         "year":"2022"
     }
     response = handler(json_data,context = "hello")
     print(response)
+"""
+
 # %%
