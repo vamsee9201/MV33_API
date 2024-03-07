@@ -72,18 +72,8 @@ def handler(event,context):
         "body":json.dumps(defaultJSON)
     }
 
-#%%
-
-"""
-if __name__ == "__main__":
-    json_data = {
-        "year":"2022"
-    }
-    response = handler(json_data,context = "hello")
-    print(response)
-"""
-
 # %%
+"""
 def convertDates(startDates,endDates):
     startDatesUpdated  = []
     for index,date in enumerate(startDates):
@@ -104,19 +94,24 @@ def convertDates(startDates,endDates):
         parsedEndDates.append(parsedEndDate)
 
     return (parsedStartDates,parsedEndDates)
+"""
 #%%
 def getSchedule(year):
     url = "https://www.formula1.com/en/results.html/{}/races.html".format(year)
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
+    print("getting elements >>>")
     elements = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"})
     elements = elements.find_all('option')
     elements = elements[1:]
+    print("getting links >>>")
     links = [element.get("value") for element in elements]
+    print("getting race Names >>>")
     raceNames = [element.text for element in elements]
     circuitInfos = []
     startDates = []
     endDates = []
+    print("getting schedules process started >>>")
     for link in links:
         url = "https://www.formula1.com/en/results.html/{}/races/{}/race-result.html".format(year,link)
         response = requests.get(url)
@@ -127,17 +122,34 @@ def getSchedule(year):
         startDates.append(startDate)
         endDate = soup.find('span',{"class":"full-date"}).text
         endDates.append(endDate)
-        time.sleep(0.2)
-    startDates,endDates = convertDates(startDates,endDates)
+        #time.sleep(0.2)
+    print("finished getting schedules >>>")
+    #startDates,endDates = convertDates(startDates,endDates)
     scheduleJson = {
         "raceName":raceNames,
         "circuitInfo":circuitInfos,
         "startDate":startDates,
         "endDate":endDates
     }
+    print("returning the payload >>>")
     returnPayload = {
          "statusCode": 200,
         'headers': {'Content-Type': 'application/json'},
         "body":json.dumps(scheduleJson)
         }
     return returnPayload
+#%%
+
+"""
+if __name__ == "__main__":
+    json_data = {
+         "body" :
+    '{ "year": 2024}',
+    "resource":"/schedule"
+    }
+    response = handler(json_data,context = "hello")
+    print(response)
+"""
+
+
+# %%
