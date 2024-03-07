@@ -52,3 +52,29 @@ teamTable = pd.DataFrame(teamJson)
 teamTable
 
 # %%
+url = "https://www.formula1.com/en/results.html/2024/races.html"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+# %%
+allRaces = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"})
+# %%
+allRaces = allRaces.find_all('option')
+allRaces = allRaces[1:]
+#%%
+links = [element.get("value") for element in allRaces]
+# %%
+raceNames = [element.text for element in allRaces]
+# %%
+raceNames
+#%%
+examplelink = "1229/bahrain"
+url = "https://www.formula1.com/en/results.html/2024/races/{}/race-result.html".format(examplelink)
+url
+#%%
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+# %%
+info = soup.find('span',{"class":"circuit-info"}).text
+start_date = soup.find('span',{"class":"start-date"}).text
+end_date = soup.find('span',{"class":"full-date"}).text
+# %%
