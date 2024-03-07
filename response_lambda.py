@@ -19,8 +19,6 @@ def handler(event,context):
     year = 2023
     """
 
-    
-   
     if route == "drivers":
         url = 'https://www.formula1.com/en/results.html/{}/drivers.html'.format(year)
         response = requests.get(url)
@@ -129,7 +127,7 @@ def getSchedule(year):
         startDates.append(startDate)
         endDate = soup.find('span',{"class":"full-date"}).text
         endDates.append(endDate)
-        time.sleep(1)
+        time.sleep(0.2)
     startDates,endDates = convertDates(startDates,endDates)
     scheduleJson = {
         "raceName":raceNames,
