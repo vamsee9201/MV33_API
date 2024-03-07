@@ -80,7 +80,7 @@ info = soup.find('span',{"class":"circuit-info"}).text
 start_date = soup.find('span',{"class":"start-date"}).text
 end_date = soup.find('span',{"class":"full-date"}).text
 #%%
-
+"""
 def getSchedule(year):
     url = "https://www.formula1.com/en/results.html/{}/races.html".format(year)
     response = requests.get(url)
@@ -109,6 +109,7 @@ def getSchedule(year):
         "circuitInfo":circuitInfos
     }
     return scheduleJson
+"""
 #%%
 startDatesSample = ['29 Feb',
   '07',
@@ -189,6 +190,7 @@ def getSchedule(year):
     elements = elements.find_all('option')
     elements = elements[1:]
     links = [element.get("value") for element in elements]
+    raceNames = [element.text for element in elements]
     circuitInfos = []
     startDates = []
     endDates = []
@@ -205,9 +207,12 @@ def getSchedule(year):
         time.sleep(1)
     startDates,endDates = convertDates(startDates,endDates)
     scheduleJson = {
+        "raceName":raceNames,
+        "circuitInfo":circuitInfos,
         "startDate":startDates,
-        "endDate":endDates,
-        "circuitInfo":circuitInfos
+        "endDate":endDates
     }
     return scheduleJson
+#%%
+getSchedule(2024)
 # %%
