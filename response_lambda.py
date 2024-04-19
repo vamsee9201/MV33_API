@@ -62,6 +62,10 @@ def handler(event,context):
     if route == "schedule":
         returnPayload = getSchedule(year)
         return returnPayload
+    
+    if route == "raceIdLinks":
+        returnPayload = getRaceIdLinks(year)
+        return returnPayload
 
     defaultJSON = {
         "message":"no data"
