@@ -63,7 +63,7 @@ def handler(event,context):
         returnPayload = getSchedule(year)
         return returnPayload
     
-    if route == "raceIdLinks":
+    if route == "raceidlinks":
         returnPayload = getRaceIdLinks(year)
         return returnPayload
 
