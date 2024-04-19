@@ -225,7 +225,19 @@ soup
 
 # %%
 optionsList = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"}).find_all("option")
+optionsList
+#%%
+linksList = []
 for option in optionsList:
+    if option.get_text() != "All" :
+        link = option.get('value')
+        linksList.append(link)
+#%%
+linksList
+#%%
+
+
+
     
 
 # %%
