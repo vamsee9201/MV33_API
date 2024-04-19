@@ -140,7 +140,11 @@ def getSchedule(year):
     return returnPayload
 #%%
 def getRaceLinks(year):
-    
+    url = "https://www.formula1.com/en/results.html/{}/races.html"
+    print("getting respose >>>")
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
     return None
 
 #%%

@@ -214,5 +214,18 @@ def getSchedule(year):
     }
     return scheduleJson
 #%%
-getSchedule(2024)
+#getSchedule(2024)
+# %%
+
+url = "https://www.formula1.com/en/results.html/{}/races.html"
+print("getting respose >>>")
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+soup
+
+# %%
+optionsList = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"}).find_all("option")
+for option in optionsList:
+    
+
 # %%
