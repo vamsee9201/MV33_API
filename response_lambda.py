@@ -139,6 +139,11 @@ def getSchedule(year):
         }
     return returnPayload
 #%%
+def getRaceLinks(year):
+    
+    return None
+
+#%%
 
 """
 if __name__ == "__main__":
