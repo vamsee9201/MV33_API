@@ -147,6 +147,7 @@ def getRaceIdLinks(year):
     url = "https://www.formula1.com/en/results.html/{}/races.html".format(year)
     print("getting respose >>>")
     response = requests.get(url)
+    print("converting to soup >>>")
     soup = BeautifulSoup(response.content, 'html.parser')
     optionsList = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"}).find_all("option")
     optionsList
@@ -163,6 +164,7 @@ def getRaceIdLinks(year):
         'headers': {'Content-Type': 'application/json'},
         "body":json.dumps(IdlinksJson)
         }
+    return returnPayload
 
 #%%
 
@@ -170,8 +172,8 @@ def getRaceIdLinks(year):
 if __name__ == "__main__":
     json_data = {
          "body" :
-    '{ "year": 2024}',
-    "resource":"/schedule"
+    '{ "year": 2023}',
+    "resource":"/raceidlinks"
     }
     response = handler(json_data,context = "hello")
     print(response)
