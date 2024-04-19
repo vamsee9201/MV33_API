@@ -165,6 +165,9 @@ def getRaceIdLinks(year):
         "body":json.dumps(IdlinksJson)
         }
     return returnPayload
+#%%
+def getScheduleFromRaceLink(raceLink):
+    return None
 
 #%%
 
