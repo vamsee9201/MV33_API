@@ -139,13 +139,26 @@ def getSchedule(year):
         }
     return returnPayload
 #%%
-def getRaceLinks(year):
-    url = "https://www.formula1.com/en/results.html/{}/races.html"
+def getRaceIdLinks(year):
+    url = "https://www.formula1.com/en/results.html/{}/races.html".format(year)
     print("getting respose >>>")
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
-
-    return None
+    optionsList = soup.find('select',{"class":"resultsarchive-filter-form-select","name":"meetingKey"}).find_all("option")
+    optionsList
+    linksList = []
+    for option in optionsList:
+        if option.get_text() != "All" :
+            link = option.get('value')
+            linksList.append(link)
+    IdlinksJson = {
+        "Idlinks":linksList
+    }
+    returnPayload = {
+         "statusCode": 200,
+        'headers': {'Content-Type': 'application/json'},
+        "body":json.dumps(IdlinksJson)
+        }
 
 #%%
 
