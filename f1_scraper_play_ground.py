@@ -239,8 +239,9 @@ url = "https://www.formula1.com/en/results.html/2024/races/1229/bahrain/race-res
 #%%
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
-
-
-    
+pElement = soup.find('p', {'class':'date'})
+startDate = pElement.find("span",{'class':'start-date'}).get_text()
+endDate = pElement.find("span",{'class':'full-date'}).get_text()
+circuitInfo = pElement.find("span",{'class':'circuit-info'}).get_text()
 
 # %%
