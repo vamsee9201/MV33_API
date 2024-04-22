@@ -245,3 +245,5 @@ endDate = pElement.find("span",{'class':'full-date'}).get_text()
 circuitInfo = pElement.find("span",{'class':'circuit-info'}).get_text()
 
 # %%
+url = "https://www.formula1.com/en/results.html/2024/races/1229/bahrain/race-result.html"
+response = requests.get(url)
