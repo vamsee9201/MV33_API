@@ -182,9 +182,9 @@ def getScheduleFromRaceLink(raceLink,year):
     returnPayload = {
          "statusCode": 200,
         'headers': {'Content-Type': 'application/json'},
-        "body":json.dumps()
+        "body":json.dumps(scheduleData)
         }
-    return None
+    return returnPayload
 
 #%%
 
