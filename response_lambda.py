@@ -166,7 +166,24 @@ def getRaceIdLinks(year):
         }
     return returnPayload
 #%%
-def getScheduleFromRaceLink(raceLink):
+def getScheduleFromRaceLink(raceLink,year):
+    url = "https://www.formula1.com/en/results.html/{}/races/{}/race-result.html".format(raceLink,year)
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    pElement = soup.find('p', {'class':'date'})
+    startDate = pElement.find("span",{'class':'start-date'}).get_text()
+    endDate = pElement.find("span",{'class':'full-date'}).get_text()
+    circuitInfo = pElement.find("span",{'class':'circuit-info'}).get_text()
+    scheduleData = {
+        "startDate":startDate,
+        "endDate":endDate,
+        "circuitInfo":circuitInfo
+    }
+    returnPayload = {
+         "statusCode": 200,
+        'headers': {'Content-Type': 'application/json'},
+        "body":json.dumps()
+        }
     return None
 
 #%%
