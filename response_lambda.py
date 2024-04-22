@@ -186,6 +186,8 @@ def getScheduleFromRaceLink(raceLink,year):
         }
     return returnPayload
 
+def getRaceResultFromRaceLink(raceLink,year):
+    return None
 #%%
 
 """
