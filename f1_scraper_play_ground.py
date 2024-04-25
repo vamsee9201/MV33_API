@@ -248,5 +248,6 @@ circuitInfo = pElement.find("span",{'class':'circuit-info'}).get_text()
 url = "https://www.formula1.com/en/results.html/2024/races/1229/bahrain/race-result.html"
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
-soup.find(class_="resultsarchive-table")
+table = soup.find(class_="resultsarchive-table")
 # %%
+table.find("tbody")
