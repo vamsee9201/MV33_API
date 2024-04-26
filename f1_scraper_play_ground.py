@@ -250,4 +250,9 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 table = soup.find(class_="resultsarchive-table")
 # %%
-table.find("tbody")
+temp = table.find("tbody")
+# %%
+temp.find_all("span",{"class":"hide-for-tablet"})
+temp.find_all("span",{"class":"hide-for-mobile"})
+
+# %%
