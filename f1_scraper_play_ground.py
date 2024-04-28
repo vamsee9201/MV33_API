@@ -257,6 +257,7 @@ temp
 temp.find_all("span",{"class":"hide-for-tablet"})
 temp.find_all("span",{"class":"hide-for-mobile"})
 temp.find_all("td",{"class":"semi-bold uppercase hide-for-tablet"})
+temp.find_all("td",{"class":"bold hide-for-mobile"})
 
 
 # %%
