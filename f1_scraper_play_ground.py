@@ -261,8 +261,12 @@ lastNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for
 driverCodes = [span.get_text() for span in temp.find_all("span",{"class":"uppercase hide-for-desktop"})]
 #%%
 particularRaceDataJson = {
-
+"firstName" : firstNames,
+"lastName" : lastNames,
+"driverCode" : driverCodes
 }
+particularRaceDataFrame = pd.DataFrame(particularRaceDataJson)
+particularRaceDataFrame
 #%%
 temp.find_all("td",{"class":"semi-bold uppercase hide-for-tablet"})
 temp.find_all("td",{"class":"bold hide-for-mobile"})

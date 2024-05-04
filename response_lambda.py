@@ -187,7 +187,11 @@ def getScheduleFromRaceLink(raceLink,year):
     return returnPayload
 
 def getRaceResultFromRaceLink(raceLink,year):
+    url = "https://www.formula1.com/en/results.html/{}/races/{}/race-result.html".format(year,raceLink)
+
     return None
+
+
 #%%
 
 """
