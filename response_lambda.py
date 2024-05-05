@@ -188,7 +188,9 @@ def getScheduleFromRaceLink(raceLink,year):
 
 def getRaceResultFromRaceLink(raceLink,year):
     url = "https://www.formula1.com/en/results.html/{}/races/{}/race-result.html".format(year,raceLink)
-
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    table = soup.find(class_="resultsarchive-table")
     return None
 
 
