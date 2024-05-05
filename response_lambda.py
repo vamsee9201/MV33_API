@@ -191,6 +191,9 @@ def getRaceResultFromRaceLink(raceLink,year):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     table = soup.find(class_="resultsarchive-table")
+    temp = table.find("tbody")
+    firstNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-tablet"})]
+
     return None
 
 
