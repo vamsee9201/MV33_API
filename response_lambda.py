@@ -193,6 +193,8 @@ def getRaceResultFromRaceLink(raceLink,year):
     table = soup.find(class_="resultsarchive-table")
     temp = table.find("tbody")
     firstNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-tablet"})]
+    lastNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-mobile"})]
+
 
     return None
 
