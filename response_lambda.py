@@ -194,6 +194,7 @@ def getRaceResultFromRaceLink(raceLink,year):
     temp = table.find("tbody")
     firstNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-tablet"})]
     lastNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-mobile"})]
+    driverCodes = [span.get_text() for span in temp.find_all("span",{"class":"uppercase hide-for-desktop"})]
 
 
     return None
