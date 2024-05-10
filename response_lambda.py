@@ -195,9 +195,8 @@ def getRaceResultFromRaceLink(raceLink,year):
     firstNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-tablet"})]
     lastNames = [span.get_text() for span in temp.find_all("span",{"class":"hide-for-mobile"})]
     driverCodes = [span.get_text() for span in temp.find_all("span",{"class":"uppercase hide-for-desktop"})]
-    returnDataFrame = pd.DataFrame()
     dfJson = {}
-
+    returnDataFrame = pd.DataFrame(dfJson)
     return None
 
 
